@@ -36,6 +36,15 @@ export default class EditableLabel extends React.Component {
         	text: this.textInput.value,
         });
     }
+	
+    _handleKeyDown(e){
+        if(e.keyCode === ENTER_KEY_CODE){
+            this._handleEnterKey();
+        }
+    }
+     _handleEnterKey(){
+        this._handleFocus();
+    }
 
     render() {
     	if(this.state.isEditing) {
@@ -46,6 +55,7 @@ export default class EditableLabel extends React.Component {
                     value={this.state.text} 
                     onChange={this._handleChange}
                     onBlur={this._handleFocus}
+		    onKeyDown={this._handleKeyDown}
                     style={{ 
                     	width: this.props.inputWidth,
                         height: this.props.inputHeight,
